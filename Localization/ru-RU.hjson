@@ -1,0 +1,58 @@
+Mods: {
+	BlueMoon: {
+		Items: {
+			BlueMedallion: {
+				// Tooltip: Summons a rare Blue Moon at night
+				// DisplayName: Blue Medallion
+			}
+
+			CherryAmulet: {
+				// Tooltip: Summons a lovely Cherry Moon at night
+				// DisplayName: Cherry Amulet
+			}
+
+			HarvestLantern: {
+				// Tooltip: Summons a festive Harvest Moon at night
+				// DisplayName: Harvest Lantern
+			}
+
+			HarvestMoonMusicBox: {
+				// Tooltip: ""
+				// DisplayName: Harvest Moon Music Box
+			}
+
+			CherryMoonMusicBox: {
+				// Tooltip: ""
+				// DisplayName: Cherry Moon Music Box
+			}
+
+			BlueMoonMusicBox: {
+				// Tooltip: ""
+				// DisplayName: Blue Moon Music Box
+			}
+		}
+
+		Buffs: {
+			BountifulHarvestBuff: {
+				// DisplayName: Bountiful Harvest
+				// Description: The Harvest Moon's blessing fills your pockets with riches. Enemies drop more coins for you.
+			}
+
+			FloralBlessingBuff: {
+				// DisplayName: Floral Blessing
+				// Description: Embrace the Cherry Moon's healing aura. Your wounds mend swiftly.
+			}
+
+			LunarEmpowermentBuff: {
+				// DisplayName: Lunar Empowerment
+				// Description: The moon bestows some of its luck onto you.
+			}
+		}
+
+		Tiles: {
+			// HarvestMoonMusicBoxTile.MapEntry: Harvest Moon Music Box Tile
+			// CherryMoonMusicBoxTile.MapEntry: Cherry Moon Music Box Tile
+			// BlueMoonMusicBoxTile.MapEntry: Blue Moon Music Box Tile
+		}
+	}
+}

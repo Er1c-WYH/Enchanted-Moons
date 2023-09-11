@@ -1,0 +1,63 @@
+[b]This mod adds 3 new peaceful events into the game. They have a chance of 1/9 to happen during night and can also be spawned using their summoning item.[/b]
+
+It contains the following events:
+
+[*] Blue Moon:
+
+Gives the [b]Lunar Empowerment[/b] buff which gives the player +25% luck in Pre-Hardmode and +50% luck in Hardmode.
+
+Can be spawned using a [b]Blue Medallion[/b]:
+- 1 Sapphire
+- 5 Any Iron Bars
+at a workbench
+
+[*] Cherry Moon:
+
+Gives the [b]Floral Empowerment[/b] buff which gives the player life regeneration.
+
+Can be spawned using a [b]Cherry Amulet[/b]:
+- 1 Ruby
+- 5 Any Iron Bars
+at a workbench
+
+[*] Harvest Moon:
+
+Gives the [b]Bountiful Harvest[/b] buff which make enemies drop 1.5x more gold in Pre-Hardmode and 2x gold in Hardmode.
+
+Can be spawned using a [b]Harvest Lantern[/b]:
+- 1 Topaz
+- 5 Any Iron Bars
+at a workbench
+
+The moons also features their own soundtracks and shaders.
+
+You can disable natural spawns for any moon and toggle the decreased spawn rate during them in the config.
+
+Special thanks to:
+[b]LuckyCat[/b] for sprites!
+[b]GBR MUSIC[/b] for the Blue Moon soundtrack!
+[b]Century of War[/b] for the Harvest Moon soundtrack!
+[b]snokums[/b] for the Cherry Moon soundtrack!
+
+Join our discord for similar mods: https://discord.gg/te6MPuWbtD
+
+[b]1.4.4 Changelog:[/b]
+
+[*] [b]v1.0[/b]
+- Reworked and balanced the mod
+- Added 2 more moons
+- Added music boxes
+
+[b]1.4.3 - 1.4.4 Changelog:[/b]
+[*] [b]v0.3 - v0.4[/b]
+- Nerfed the buffs during pre-hardmode
+- Changed the item sprite
+- Changed the shader brightness (Now it's brighter)
+
+[*] [b]v0.1 - v0.2[/b]
+- Released on 1.4.3 and 1.4.4
+
+You can find my other mods here:
+[*] [url]https://steamcommunity.com/id/MGTro/myworkshopfiles/?appid=1281930[/url]
+
+[i]https://linktr.ee/_mgt_[/i]

@@ -1,0 +1,58 @@
+Mods: {
+	BlueMoon: {
+		Items: {
+			BlueMedallion: {
+				Tooltip: Przywołuje rzadki Niebieski Księżyc w nocy
+				DisplayName: Niebieska Medalion
+			}
+
+			CherryAmulet: {
+				Tooltip: Przywołuje uroczy Księżyc Wiśni w nocy
+				DisplayName: Amulet Wiśniowy
+			}
+
+			HarvestLantern: {
+				Tooltip: Przywołuje uroczysty Księżyc Plonów w nocy
+				DisplayName: Lampion Plonów
+			}
+
+			HarvestMoonMusicBox: {
+				// Tooltip: ""
+				// DisplayName: Harvest Moon Music Box
+			}
+
+			CherryMoonMusicBox: {
+				// Tooltip: ""
+				// DisplayName: Cherry Moon Music Box
+			}
+
+			BlueMoonMusicBox: {
+				// Tooltip: ""
+				// DisplayName: Blue Moon Music Box
+			}
+		}
+
+		Buffs: {
+			BountifulHarvestBuff: {
+				DisplayName: Obfity Plon
+				Description: Błogosławieństwo Księżyca Plonów wypełnia twoje kieszenie bogactwem. Wrogowie zostawiają więcej monet dla ciebie.
+			}
+
+			FloralBlessingBuff: {
+				DisplayName: Kwiatowe Błogosławieństwo
+				Description: Przyjmij uzdrawiającą aurę Księżyca Wiśni. Twoje rany goją się szybko.
+			}
+
+			LunarEmpowermentBuff: {
+				DisplayName: Wzmacnianie Lunarne
+				Description: Księżyc obdarza cię swoim szczęściem.
+			}
+		}
+
+		Tiles: {
+			// HarvestMoonMusicBoxTile.MapEntry: Harvest Moon Music Box Tile
+			// CherryMoonMusicBoxTile.MapEntry: Cherry Moon Music Box Tile
+			// BlueMoonMusicBoxTile.MapEntry: Blue Moon Music Box Tile
+		}
+	}
+}

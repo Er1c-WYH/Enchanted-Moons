@@ -1,0 +1,39 @@
+BlueMoonConfig: {
+	DisplayName: Configurazione delle Lune Incantate
+
+	Headers: {
+		Blue_Moon: Luna Blu
+		Cherry_Moon: Luna di Ciliegia
+		Harvest_Moon: Luna del Raccolto
+	}
+
+	EnableBlueMoonSpawn: {
+		Label: Abilita la comparsa naturale della Luna Blu
+		Tooltip: ""
+	}
+
+	DecreaseBlueMoonSpawnRate: {
+		Label: Riduci il tasso di comparsa dei nemici durante la Luna Blu
+		Tooltip: ""
+	}
+
+	EnableCherryMoonSpawn: {
+		Label: Abilita la comparsa naturale della Luna di Ciliegia
+		Tooltip: ""
+	}
+
+	DecreaseCherryMoonSpawnRate: {
+		Label: Riduci il tasso di comparsa dei nemici durante la Luna di Ciliegia
+		Tooltip: ""
+	}
+
+	EnableHarvestMoonSpawn: {
+		Label: Abilita la comparsa naturale della Luna del Raccolto
+		Tooltip: ""
+	}
+
+	DecreaseHarvestMoonSpawnRate: {
+		Label: Riduci il tasso di comparsa dei nemici durante la Luna del Raccolto
+		Tooltip: ""
+	}
+}

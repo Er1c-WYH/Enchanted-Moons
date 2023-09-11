@@ -1,0 +1,39 @@
+BlueMoonConfig: {
+	DisplayName: Configuração das Luas Encantadas
+
+	Headers: {
+		Blue_Moon: Lua Azul
+		Cherry_Moon: Lua Cereja
+		Harvest_Moon: Lua da Colheita
+	}
+
+	EnableBlueMoonSpawn: {
+		Label: Ativar a aparição natural da Lua Azul
+		Tooltip: ""
+	}
+
+	DecreaseBlueMoonSpawnRate: {
+		Label: Diminuir a taxa de aparição de inimigos durante a Lua Azul
+		Tooltip: ""
+	}
+
+	EnableCherryMoonSpawn: {
+		Label: Ativar a aparição natural da Lua Cereja
+		Tooltip: ""
+	}
+
+	DecreaseCherryMoonSpawnRate: {
+		Label: Diminuir a taxa de aparição de inimigos durante a Lua Cereja
+		Tooltip: ""
+	}
+
+	EnableHarvestMoonSpawn: {
+		Label: Ativar a aparição natural da Lua da Colheita
+		Tooltip: ""
+	}
+
+	DecreaseHarvestMoonSpawnRate: {
+		Label: Diminuir a taxa de aparição de inimigos durante a Lua da Colheita
+		Tooltip: ""
+	}
+}

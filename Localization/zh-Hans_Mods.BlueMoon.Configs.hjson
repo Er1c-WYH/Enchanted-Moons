@@ -1,0 +1,39 @@
+BlueMoonConfig: {
+	DisplayName: 魔法月亮配置
+
+	Headers: {
+		Blue_Moon: 蓝月亮
+		Cherry_Moon: 樱花月亮
+		Harvest_Moon: 丰收月亮
+	}
+
+	EnableBlueMoonSpawn: {
+		Label: 启用自然蓝月亮生成
+		Tooltip: ""
+	}
+
+	DecreaseBlueMoonSpawnRate: {
+		Label: 减少蓝月亮时的敌人生成率
+		Tooltip: ""
+	}
+
+	EnableCherryMoonSpawn: {
+		Label: 启用自然樱花月亮生成
+		Tooltip: ""
+	}
+
+	DecreaseCherryMoonSpawnRate: {
+		Label: 减少樱花月亮时的敌人生成率
+		Tooltip: ""
+	}
+
+	EnableHarvestMoonSpawn: {
+		Label: 启用自然丰收月亮生成
+		Tooltip: ""
+	}
+
+	DecreaseHarvestMoonSpawnRate: {
+		Label: 减少丰收月亮时的敌人生成率
+		Tooltip: ""
+	}
+}

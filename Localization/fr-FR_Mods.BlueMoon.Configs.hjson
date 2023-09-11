@@ -1,0 +1,39 @@
+BlueMoonConfig: {
+	DisplayName: Configuration des Lunes enchantées
+
+	Headers: {
+		Blue_Moon: Lune bleue
+		Cherry_Moon: Lune cerise
+		Harvest_Moon: Lune de récolte
+	}
+
+	EnableBlueMoonSpawn: {
+		Label: Activer l'apparition naturelle de la Lune bleue
+		Tooltip: ""
+	}
+
+	DecreaseBlueMoonSpawnRate: {
+		Label: Diminuer le taux d'apparition des ennemis pendant la Lune bleue
+		Tooltip: ""
+	}
+
+	EnableCherryMoonSpawn: {
+		Label: Activer l'apparition naturelle de la Lune cerise
+		Tooltip: ""
+	}
+
+	DecreaseCherryMoonSpawnRate: {
+		Label: Diminuer le taux d'apparition des ennemis pendant la Lune cerise
+		Tooltip: ""
+	}
+
+	EnableHarvestMoonSpawn: {
+		Label: Activer l'apparition naturelle de la Lune de récolte
+		Tooltip: ""
+	}
+
+	DecreaseHarvestMoonSpawnRate: {
+		Label: Diminuer le taux d'apparition des ennemis pendant la Lune de récolte
+		Tooltip: ""
+	}
+}

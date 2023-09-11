@@ -1,0 +1,58 @@
+Mods: {
+	BlueMoon: {
+		Items: {
+			BlueMedallion: {
+				Tooltip: 夜晚召唤稀有的蓝月亮
+				DisplayName: 蓝色勋章
+			}
+
+			CherryAmulet: {
+				Tooltip: 夜晚召唤可爱的樱花月亮
+				DisplayName: 樱花护身符
+			}
+
+			HarvestLantern: {
+				Tooltip: 夜晚召唤欢乐的丰收月亮
+				DisplayName: 丰收灯笼
+			}
+
+			HarvestMoonMusicBox: {
+				// Tooltip: ""
+				// DisplayName: Harvest Moon Music Box
+			}
+
+			CherryMoonMusicBox: {
+				// Tooltip: ""
+				// DisplayName: Cherry Moon Music Box
+			}
+
+			BlueMoonMusicBox: {
+				// Tooltip: ""
+				// DisplayName: Blue Moon Music Box
+			}
+		}
+
+		Buffs: {
+			BountifulHarvestBuff: {
+				DisplayName: 丰收之祝
+				Description: 丰收月亮的祝福充实了你的口袋。敌人为你掉落更多的硬币。
+			}
+
+			FloralBlessingBuff: {
+				DisplayName: 花之祝福
+				Description: 拥抱樱花月亮的治愈光环。你的伤口迅速愈合。
+			}
+
+			LunarEmpowermentBuff: {
+				DisplayName: 月亮赋能
+				Description: 月亮赐予你一些好运。
+			}
+		}
+
+		Tiles: {
+			// HarvestMoonMusicBoxTile.MapEntry: Harvest Moon Music Box Tile
+			// CherryMoonMusicBoxTile.MapEntry: Cherry Moon Music Box Tile
+			// BlueMoonMusicBoxTile.MapEntry: Blue Moon Music Box Tile
+		}
+	}
+}

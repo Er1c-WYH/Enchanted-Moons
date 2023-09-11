@@ -1,0 +1,60 @@
+﻿using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Terraria.Graphics.Effects;
+using Terraria.Graphics.Shaders;
+using Terraria.ModLoader;
+using Terraria;
+using Terraria.ModLoader.Config;
+using BlueMoon.Events;
+using System.ComponentModel;
+
+namespace BlueMoon
+{
+    internal class BlueMoon
+    {
+        public class Main : Mod
+        {
+            public Main()
+            {
+                // Register the configuration class.
+                Properties = new ModProperties
+                {
+                    Autoload = true,
+                    ConfigurationMenu = true,
+                };
+            }
+            public override void Load()
+
+            {
+                Filters.Scene["BlueMoonShader"] = new Filter(new ScreenShaderData(new Ref<Effect>(ModContent.Request<Effect>("BlueMoon/Effects/BlueMoonShader", AssetRequestMode.ImmediateLoad).Value), "BlueMoonShader"), EffectPriority.VeryHigh);
+                Filters.Scene["CherryMoonShader"] = new Filter(new ScreenShaderData(new Ref<Effect>(ModContent.Request<Effect>("BlueMoon/Effects/CherryMoonShader", AssetRequestMode.ImmediateLoad).Value), "CherryMoonShader"), EffectPriority.VeryHigh);
+                Filters.Scene["HarvestMoonShader"] = new Filter(new ScreenShaderData(new Ref<Effect>(ModContent.Request<Effect>("BlueMoon/Effects/HarvestMoonShader", AssetRequestMode.ImmediateLoad).Value), "HarvestMoonShader"), EffectPriority.VeryHigh);
+
+                Filters.Scene["BlueMoonShader"].Load();
+                Filters.Scene["CherryMoonShader"].Load();
+                Filters.Scene["HarvestMoonShader"].Load();
+            }
+        }
+        public class BlueMoonConfig : ModConfig
+        {
+            public override ConfigScope Mode => ConfigScope.ServerSide;
+
+            [Header("Blue Moon Event")]
+            [Label("Enable Blue Moon Event")]
+            [DefaultValue(true)]
+            [Tooltip("Set to true to enable the Blue Moon event to spawn naturally.")]
+            public bool EnableBlueMoonEvent;
+
+            public override void OnChanged()
+            {
+                // Update the BlueMoonEvent.blueMoon variable when the configuration changes.
+                BlueMoonEvent.blueMoon = EnableBlueMoonEvent;
+            }
+        }
+    }
+}

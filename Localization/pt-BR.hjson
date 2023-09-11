@@ -1,0 +1,58 @@
+Mods: {
+	BlueMoon: {
+		Items: {
+			BlueMedallion: {
+				Tooltip: Invoca uma rara Lua Azul à noite
+				DisplayName: Medalhão Azul
+			}
+
+			CherryAmulet: {
+				Tooltip: Invoca uma adorável Lua Cereja à noite
+				DisplayName: Amuleto de Cereja
+			}
+
+			HarvestLantern: {
+				Tooltip: Invoca uma Lua da Colheita festiva à noite
+				DisplayName: Lanterna da Colheita
+			}
+
+			HarvestMoonMusicBox: {
+				// Tooltip: ""
+				// DisplayName: Harvest Moon Music Box
+			}
+
+			CherryMoonMusicBox: {
+				// Tooltip: ""
+				// DisplayName: Cherry Moon Music Box
+			}
+
+			BlueMoonMusicBox: {
+				// Tooltip: ""
+				// DisplayName: Blue Moon Music Box
+			}
+		}
+
+		Buffs: {
+			BountifulHarvestBuff: {
+				DisplayName: Colheita Abundante
+				Description: A bênção da Lua da Colheita enche seus bolsos de riqueza. Inimigos deixam mais moedas para você.
+			}
+
+			FloralBlessingBuff: {
+				DisplayName: Bênção Floral
+				Description: Abraçe a aura de cura da Lua Cereja. Suas feridas se curam rapidamente.
+			}
+
+			LunarEmpowermentBuff: {
+				DisplayName: Empoderamento Lunar
+				Description: A lua concede um pouco de sua sorte para você.
+			}
+		}
+
+		Tiles: {
+			// HarvestMoonMusicBoxTile.MapEntry: Harvest Moon Music Box Tile
+			// CherryMoonMusicBoxTile.MapEntry: Cherry Moon Music Box Tile
+			// BlueMoonMusicBoxTile.MapEntry: Blue Moon Music Box Tile
+		}
+	}
+}

@@ -1,0 +1,39 @@
+BlueMoonConfig: {
+	DisplayName: Konfiguracja Zaczarowanych Księżyców
+
+	Headers: {
+		Blue_Moon: Niebieski Księżyc
+		Cherry_Moon: Księżyc Wiśni
+		Harvest_Moon: Księżyc Plonów
+	}
+
+	EnableBlueMoonSpawn: {
+		Label: Włącz naturalne pojawianie się Niebieskiego Księżyca
+		Tooltip: ""
+	}
+
+	DecreaseBlueMoonSpawnRate: {
+		Label: Zmniejsz tempo pojawiania się wrogów podczas Niebieskiego Księżyca
+		Tooltip: ""
+	}
+
+	EnableCherryMoonSpawn: {
+		Label: Włącz naturalne pojawianie się Księżyca Wiśni
+		Tooltip: ""
+	}
+
+	DecreaseCherryMoonSpawnRate: {
+		Label: Zmniejsz tempo pojawiania się wrogów podczas Księżyca Wiśni
+		Tooltip: ""
+	}
+
+	EnableHarvestMoonSpawn: {
+		Label: Włącz naturalne pojawianie się Księżyca Plonów
+		Tooltip: ""
+	}
+
+	DecreaseHarvestMoonSpawnRate: {
+		Label: Zmniejsz tempo pojawiania się wrogów podczas Księżyca Plonów
+		Tooltip: ""
+	}
+}

@@ -1,0 +1,39 @@
+BlueMoonConfig: {
+	DisplayName: Configuración de Lunas Encantadas
+
+	Headers: {
+		Blue_Moon: Luna Azul
+		Cherry_Moon: Luna de Cereza
+		Harvest_Moon: Luna de la Cosecha
+	}
+
+	EnableBlueMoonSpawn: {
+		Label: Habilitar la aparición natural de la Luna Azul
+		Tooltip: ""
+	}
+
+	DecreaseBlueMoonSpawnRate: {
+		Label: Reducir la tasa de aparición durante la Luna Azul
+		Tooltip: ""
+	}
+
+	EnableCherryMoonSpawn: {
+		Label: Habilitar la aparición natural de la Luna de Cereza
+		Tooltip: ""
+	}
+
+	DecreaseCherryMoonSpawnRate: {
+		Label: Reducir la tasa de aparición durante la Luna de Cereza
+		Tooltip: ""
+	}
+
+	EnableHarvestMoonSpawn: {
+		Label: Habilitar la aparición natural de la Luna de la Cosecha
+		Tooltip: ""
+	}
+
+	DecreaseHarvestMoonSpawnRate: {
+		Label: Reducir la tasa de aparición durante la Luna de la Cosecha
+		Tooltip: ""
+	}
+}
