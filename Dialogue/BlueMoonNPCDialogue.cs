@@ -1,4 +1,4 @@
-﻿/*
+﻿/* doesn't work
 using BlueMoon.Events;
 using Terraria;
 using Terraria.ID;
