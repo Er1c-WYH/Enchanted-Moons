@@ -5,17 +5,17 @@ using Terraria.ModLoader;
 
 namespace BlueMoon.Items
 {
-    public class HarvestLantern : ModItem
+    public class MintRing : ModItem
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Harvest Lantern");
-            // Tooltip.SetDefault("Summons a festive Harvest Moon at night");
+        //    DisplayName.SetDefault("Mint Ring");
+        //    Tooltip.SetDefault("Summons a refreshing Mint Moon at night");
         }
 
         public override void SetDefaults()
         {
-            Item.rare = ItemRarityID.Orange;
+            Item.rare = ItemRarityID.Green;
             Item.value = Item.sellPrice(silver: 50);
             Item.maxStack = 20;
 
@@ -30,22 +30,24 @@ namespace BlueMoon.Items
 
             Item.UseSound = SoundID.Item44;
         }
+
         public override void AddRecipes()
         {
             CreateRecipe(1)
-                .AddIngredient(ItemID.Topaz, 1)
+                .AddIngredient(ItemID.Emerald, 1)
                 .AddRecipeGroup(RecipeGroupID.IronBar, 5)
-                .AddTile(TileID.WorkBenches)
+                .AddTile(TileID.Anvils)
                 .Register();
         }
+
         public override bool CanUseItem(Player player)
         {
-            return !Main.dayTime && !BlueMoonEvent.blueMoon && !CherryMoonEvent.cherryMoon && !HarvestMoonEvent.harvestMoon && !MintMoonEvent.mintMoon && !Main.pumpkinMoon && !Main.snowMoon;
+            return !Main.dayTime && !MintMoonEvent.mintMoon && !BlueMoonEvent.blueMoon && !CherryMoonEvent.cherryMoon && !HarvestMoonEvent.harvestMoon && !Main.pumpkinMoon && !Main.snowMoon;
         }
 
         public override bool? UseItem(Player player)
         {
-            HarvestMoonEvent.StartHarvestMoon();
+            MintMoonEvent.StartMintMoon();
             return true;
         }
     }

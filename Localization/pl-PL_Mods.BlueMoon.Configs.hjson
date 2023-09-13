@@ -5,6 +5,7 @@ BlueMoonConfig: {
 		Blue_Moon: Niebieski Księżyc
 		Cherry_Moon: Księżyc Wiśni
 		Harvest_Moon: Księżyc Plonów
+		// Mint_Moon: Mint Moon
 	}
 
 	EnableBlueMoonSpawn: {
@@ -35,5 +36,15 @@ BlueMoonConfig: {
 	DecreaseHarvestMoonSpawnRate: {
 		Label: Zmniejsz tempo pojawiania się wrogów podczas Księżyca Plonów
 		Tooltip: ""
+	}
+
+	EnableMintMoonSpawn: {
+		// Label: Enable Mint Moon Spawn
+		// Tooltip: ""
+	}
+
+	DecreaseMintMoonSpawnRate: {
+		// Label: Decrease Mint Moon Spawn Rate
+		// Tooltip: ""
 	}
 }

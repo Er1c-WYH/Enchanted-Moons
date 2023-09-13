@@ -5,6 +5,7 @@ BlueMoonConfig: {
 		Blue_Moon: Blue Moon
 		Cherry_Moon: Cherry Moon
 		Harvest_Moon: Harvest Moon
+		Mint_Moon: Mint Moon
 	}
 
 	EnableBlueMoonSpawn: {
@@ -34,6 +35,16 @@ BlueMoonConfig: {
 
 	DecreaseHarvestMoonSpawnRate: {
 		Label: Decrease Harvest Moon Spawn Rate
+		Tooltip: ""
+	}
+
+	EnableMintMoonSpawn: {
+		Label: Enable Mint Moon Spawn
+		Tooltip: ""
+	}
+
+	DecreaseMintMoonSpawnRate: {
+		Label: Decrease Mint Moon Spawn Rate
 		Tooltip: ""
 	}
 }

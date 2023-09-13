@@ -40,7 +40,7 @@ namespace BlueMoon.Items
         }
         public override bool CanUseItem(Player player)
         {
-            return !Main.dayTime && !BlueMoonEvent.blueMoon && !CherryMoonEvent.cherryMoon && !HarvestMoonEvent.harvestMoon && !Main.pumpkinMoon && !Main.snowMoon;
+            return !Main.dayTime && !BlueMoonEvent.blueMoon && !CherryMoonEvent.cherryMoon && !HarvestMoonEvent.harvestMoon && !MintMoonEvent.mintMoon && !Main.pumpkinMoon && !Main.snowMoon;
         }
 
         public override bool? UseItem(Player player)

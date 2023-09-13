@@ -5,6 +5,7 @@ BlueMoonConfig: {
 		Blue_Moon: Lua Azul
 		Cherry_Moon: Lua Cereja
 		Harvest_Moon: Lua da Colheita
+		// Mint_Moon: Mint Moon
 	}
 
 	EnableBlueMoonSpawn: {
@@ -35,5 +36,15 @@ BlueMoonConfig: {
 	DecreaseHarvestMoonSpawnRate: {
 		Label: Diminuir a taxa de aparição de inimigos durante a Lua da Colheita
 		Tooltip: ""
+	}
+
+	EnableMintMoonSpawn: {
+		// Label: Enable Mint Moon Spawn
+		// Tooltip: ""
+	}
+
+	DecreaseMintMoonSpawnRate: {
+		// Label: Decrease Mint Moon Spawn Rate
+		// Tooltip: ""
 	}
 }

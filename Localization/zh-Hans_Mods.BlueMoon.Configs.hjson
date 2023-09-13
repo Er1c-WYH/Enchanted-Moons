@@ -5,6 +5,7 @@ BlueMoonConfig: {
 		Blue_Moon: 蓝月亮
 		Cherry_Moon: 樱花月亮
 		Harvest_Moon: 丰收月亮
+		// Mint_Moon: Mint Moon
 	}
 
 	EnableBlueMoonSpawn: {
@@ -35,5 +36,15 @@ BlueMoonConfig: {
 	DecreaseHarvestMoonSpawnRate: {
 		Label: 减少丰收月亮时的敌人生成率
 		Tooltip: ""
+	}
+
+	EnableMintMoonSpawn: {
+		// Label: Enable Mint Moon Spawn
+		// Tooltip: ""
+	}
+
+	DecreaseMintMoonSpawnRate: {
+		// Label: Decrease Mint Moon Spawn Rate
+		// Tooltip: ""
 	}
 }
