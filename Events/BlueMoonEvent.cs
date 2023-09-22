@@ -137,11 +137,11 @@ namespace BlueMoon.Events
             {
                 if (Main.hardMode)
                 {
-                    Player.luck = 0.50f;
+                    Player.luck += 0.50f;
                 }
                 else
                 {
-                    Player.luck = 0.25f;
+                    Player.luck += 0.25f;
                 }
             }
         }
