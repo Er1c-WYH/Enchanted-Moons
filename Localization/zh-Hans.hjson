@@ -58,14 +58,9 @@ Mods: {
 				Description: 月亮赐予你一些好运。
 			}
 
-			MintyRefreshBuff: {
-				// DisplayName: Minty Refreshness
-				// Description: The Mint Moon�s sparkling light enhances your magical abilities. You deal more damage and have lower cooldowns.
-			}
-
 			MintyFreshnessBuff: {
-				// DisplayName: Minty Freshness Buff
-				// Description: Mods.BlueMoon.Buffs.MintyFreshnessBuff.Description
+				// DisplayName: Minty Freshness
+				// Description: The Mint Moon's sparkling light enhances your magical abilities. You deal more damage and have lower cooldowns.
 			}
 		}
 

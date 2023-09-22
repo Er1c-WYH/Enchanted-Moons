@@ -1,10 +1,10 @@
-[b]This mod adds 3 new peaceful events into the game. They have a chance of 1/9 to happen during night and can also be spawned using their summoning item.[/b]
+[b]This mod adds 4 new peaceful events into the game. They have a chance of 1/9 to happen during night and can also be spawned using their summoning item.[/b]
 
 It contains the following events:
 
 [*] Blue Moon:
 
-Gives the [b]Lunar Empowerment[/b] buff which gives the player +25% luck in Pre-Hardmode and +50% luck in Hardmode.
+Gives the [b]Lunar Empowerment[/b] buff which gives the player +25% luck in Pre-Hardmode and +50% luck in Hardmode. [i]The moon bestows some of its luck onto you.[/i]
 
 Can be spawned using a [b]Blue Medallion[/b]:
 - 1 Sapphire
@@ -13,7 +13,7 @@ at a workbench
 
 [*] Cherry Moon:
 
-Gives the [b]Floral Empowerment[/b] buff which gives the player life regeneration.
+Gives the [b]Floral Empowerment[/b] buff which gives the player life regeneration. [i]Embrace the Cherry Moon's healing aura. Your wounds mend swiftly.[/i]
 
 Can be spawned using a [b]Cherry Amulet[/b]:
 - 1 Ruby
@@ -22,10 +22,19 @@ at a workbench
 
 [*] Harvest Moon:
 
-Gives the [b]Bountiful Harvest[/b] buff which make enemies drop 1.5x more gold in Pre-Hardmode and 2x gold in Hardmode.
+Gives the [b]Bountiful Harvest[/b] buff which make enemies drop 1.5x more gold in Pre-Hardmode and 2x gold in Hardmode. [i]The Harvest Moon's blessing fills your pockets with riches. Enemies drop more coins for you.[/i]
 
 Can be spawned using a [b]Harvest Lantern[/b]:
 - 1 Topaz
+- 5 Any Iron Bars
+at a workbench
+
+[*] Mint Moon:
+
+Gives the [b]Mint Freshness[/b] buff which make enemies drop 1.5x more gold in Pre-Hardmode and 2x gold in Hardmode. [i]The Mint Moon’s sparkling light enhances your magical abilities. You deal more damage and have lower cooldowns.[/i]
+
+Can be spawned using a [b]Mint Ring[/b]:
+- 1 Emerald
 - 5 Any Iron Bars
 at a workbench
 
@@ -34,30 +43,18 @@ The moons also features their own soundtracks and shaders.
 You can disable natural spawns for any moon and toggle the decreased spawn rate during them in the config.
 
 Special thanks to:
-[b]LuckyCat[/b] for sprites!
+[b]LuckyCat[/b] for some sprites!
+[b]Century of War[/b] for the Harvest and Mint Moons soundtracks!
 [b]GBR MUSIC[/b] for the Blue Moon soundtrack!
-[b]Century of War[/b] for the Harvest Moon soundtrack!
 [b]snokums[/b] for the Cherry Moon soundtrack!
 
-Join our discord for similar mods: https://discord.gg/te6MPuWbtD
+Join the discord server for updates/announcements: https://discord.gg/te6MPuWbtD
 
-[b]1.4.4 Changelog:[/b]
+[b]Changelog:[/b]
 
-[*] [b]v1.0[/b]
-- Reworked and balanced the mod
-- Added 2 more moons
-- Added music boxes
-
-[b]1.4.3 - 1.4.4 Changelog:[/b]
-[*] [b]v0.3 - v0.4[/b]
-- Nerfed the buffs during pre-hardmode
-- Changed the item sprite
-- Changed the shader brightness (Now it's brighter)
-
-[*] [b]v0.1 - v0.2[/b]
-- Released on 1.4.3 and 1.4.4
+- Moved to the discord server
 
 You can find my other mods here:
-[*] [url]https://steamcommunity.com/id/MGTro/myworkshopfiles/?appid=1281930[/url]
+[*] [url]https://steamcommunity.com/id/DiceID/myworkshopfiles/?appid=1281930[/url]
 
-[i]https://linktr.ee/_mgt_[/i]
+[i]https://linktr.ee/Dice_Terraria[/i]

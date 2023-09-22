@@ -58,14 +58,9 @@ Mods: {
 				Description: A lua concede um pouco de sua sorte para você.
 			}
 
-			MintyRefreshBuff: {
-				// DisplayName: Minty Refreshness
-				// Description: The Mint Moon�s sparkling light enhances your magical abilities. You deal more damage and have lower cooldowns.
-			}
-
 			MintyFreshnessBuff: {
-				// DisplayName: Minty Freshness Buff
-				// Description: Mods.BlueMoon.Buffs.MintyFreshnessBuff.Description
+				// DisplayName: Minty Freshness
+				// Description: The Mint Moon's sparkling light enhances your magical abilities. You deal more damage and have lower cooldowns.
 			}
 		}
 
