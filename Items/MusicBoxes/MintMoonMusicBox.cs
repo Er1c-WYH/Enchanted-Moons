@@ -1,4 +1,5 @@
-﻿using Terraria.ID;
+﻿/* broke for no reason 
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace BlueMoon.Items.MusicBoxes
@@ -18,4 +19,4 @@ namespace BlueMoon.Items.MusicBoxes
             Item.DefaultToMusicBox(ModContent.TileType<MintMoonMusicBoxTile>(), 0);
         }
     }
-}
+} */

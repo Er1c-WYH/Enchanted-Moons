@@ -1,4 +1,4 @@
-[b]This mod adds 4 new peaceful events into the game. They have a chance of 1/9 to happen during night and can also be spawned using their summoning item.[/b]
+﻿[b]This mod adds 4 new peaceful events into the game. They have a chance of 1/9 to happen during night and can also be spawned using their summoning item.[/b]
 
 It contains the following events:
 
@@ -31,7 +31,7 @@ at a workbench
 
 [*] Mint Moon:
 
-Gives the [b]Mint Freshness[/b] buff which make enemies drop 1.5x more gold in Pre-Hardmode and 2x gold in Hardmode. [i]The Mint Moon�s sparkling light enhances your magical abilities. You deal more damage and have lower cooldowns.[/i]
+Gives the [b]Mint Freshness[/b] buff which increases your damage and reduces weapon cooldown. [i]The Mint Moon's sparkling light enhances your magical abilities. You deal more damage and have lower cooldowns.[/i]
 
 Can be spawned using a [b]Mint Ring[/b]:
 - 1 Emerald
@@ -41,6 +41,8 @@ at a workbench
 The moons also features their own soundtracks and shaders.
 
 You can disable natural spawns for any moon and toggle the decreased spawn rate during them in the config.
+
+🛈 In multiplayer the music and shader isn't being applied correctly. (bug)
 
 Special thanks to:
 [b]LuckyCat[/b] for some sprites!

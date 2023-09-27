@@ -29,7 +29,7 @@ namespace BlueMoon.Events
                 {
                     prevNightCount = currNightCount;
 
-                    if (config.EnableCherryMoonSpawn && Main.rand.NextBool(9) && !cherryMoon && !BlueMoonEvent.blueMoon && !HarvestMoonEvent.harvestMoon && Main.bloodMoon)
+                    if (config.EnableCherryMoonSpawn && Main.rand.NextBool(9) && !cherryMoon && !BlueMoonEvent.blueMoon && !HarvestMoonEvent.harvestMoon && !MintMoonEvent.mintMoon && !Main.bloodMoon)
                     {
                         StartCherryMoon();
                     }
