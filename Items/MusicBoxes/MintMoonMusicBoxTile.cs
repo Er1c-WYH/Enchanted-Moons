@@ -1,5 +1,4 @@
-﻿/*
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Localization;
@@ -33,4 +32,4 @@ namespace BlueMoon.Items.MusicBoxes
             player.cursorItemIconID = ModContent.ItemType<MintMoonMusicBox>();
         }
     }
-} */
+}
