@@ -59,7 +59,7 @@ namespace BlueMoon.Events
                 {
                     if (HarvestMoonEvent.harvestMoon)
                     {
-                        int dropChance = 1;
+                        int dropChance = 100; // Set the drop chance to 100 for the event
                         if (Main.rand.Next(dropChance) == 0)
                         {
                             Item.NewItem(npc.GetSource_Death(), npc.position, ModContent.ItemType<TopazRing>());
@@ -69,7 +69,7 @@ namespace BlueMoon.Events
             }
         }
 
-        public static void StartHarvestMoon()
+            public static void StartHarvestMoon()
         {
             harvestMoon = true;
             Main.moonPhase = 0;

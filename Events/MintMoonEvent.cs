@@ -57,9 +57,9 @@ namespace BlueMoon.Events
             {
                 if (!npc.boss && !npc.friendly && !npc.townNPC)
                 {
-                    if (HarvestMoonEvent.harvestMoon)
+                    if (MintMoonEvent.mintMoon)
                     {
-                        int dropChance = 1;
+                        int dropChance = 100;
                         if (Main.rand.Next(dropChance) == 0)
                         {
                             Item.NewItem(npc.GetSource_Death(), npc.position, ModContent.ItemType<EmeraldRing>());
