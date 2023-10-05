@@ -1,4 +1,5 @@
-﻿using BlueMoon.Events;
+﻿using BlueMoon.Buffs;
+using BlueMoon.Events;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -8,8 +9,6 @@ namespace BlueMoon.Buffs
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Bountiful Harvest");
-            // Description.SetDefault("The Harvest Moon's blessing fills your pockets with riches. Enemies drop more coins for you.");
             Main.buffNoSave[Type] = false;
             Main.buffNoTimeDisplay[Type] = true;
         }
@@ -18,19 +17,24 @@ namespace BlueMoon.Buffs
         {
             player.GetModPlayer<HarvestMoonPlayer>().bountifulHarvest = true;
         }
+    }
+}
 
-        public override void Update(NPC npc, ref int buffIndex)
+public class HarvestMoonGlobalNPCBuff : GlobalNPC
+{
+    public override void OnKill(NPC npc)
+    {
+        Player player = Main.player[npc.lastInteraction];
+        if (player.HasBuff(ModContent.BuffType<BountifulHarvestBuff>()))
         {
-            if (npc.HasBuff(Type))
+            // increase the coin value of the NPC
+            if (Main.hardMode)
             {
-                if (Main.hardMode)
-                {
-                    npc.value *= 2f;
-                }
-                else
-                {
-                    npc.value *= 1.5f;
-                }
+                npc.value *= 2f;
+            }
+            else
+            {
+                npc.value *= 1.5f;
             }
         }
     }

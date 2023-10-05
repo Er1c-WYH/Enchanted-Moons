@@ -7,11 +7,6 @@ namespace BlueMoon.Items
 {
     public class BlueMedallion : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Blue Medallion");
-            // Tooltip.SetDefault("Summons a rare Blue Moon at night");
-        }
 
         public override void SetDefaults()
         {
@@ -33,8 +28,8 @@ namespace BlueMoon.Items
         public override void AddRecipes()
         {
             CreateRecipe(1)
-                .AddIngredient(ItemID.Sapphire, 1)
-                .AddRecipeGroup(RecipeGroupID.IronBar, 5)
+                .AddIngredient(ItemID.Sapphire, 5)
+                .AddRecipeGroup("PlatinumBar", 10)
                 .AddTile(TileID.WorkBenches)
                 .Register();
         }

@@ -7,11 +7,6 @@ namespace BlueMoon.Items
 {
     public class HarvestLantern : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Harvest Lantern");
-            // Tooltip.SetDefault("Summons a festive Harvest Moon at night");
-        }
 
         public override void SetDefaults()
         {
@@ -33,8 +28,8 @@ namespace BlueMoon.Items
         public override void AddRecipes()
         {
             CreateRecipe(1)
-                .AddIngredient(ItemID.Topaz, 1)
-                .AddRecipeGroup(RecipeGroupID.IronBar, 5)
+                .AddIngredient(ItemID.Topaz, 5)
+                .AddRecipeGroup("PlatinumBar", 10)
                 .AddTile(TileID.WorkBenches)
                 .Register();
         }

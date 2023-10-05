@@ -7,11 +7,6 @@ namespace BlueMoon.Items
 {
     public class CherryAmulet : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Pink Amulet");
-            // Tooltip.SetDefault("Summons a lovely Cherry Moon at night");
-        }
 
         public override void SetDefaults()
         {
@@ -34,8 +29,8 @@ namespace BlueMoon.Items
         public override void AddRecipes()
         {
             CreateRecipe(1)
-                .AddIngredient(ItemID.Ruby, 1)
-                .AddRecipeGroup(RecipeGroupID.IronBar, 5)
+                .AddIngredient(ItemID.Ruby, 5)
+                .AddRecipeGroup("PlatinumBar", 10)
                 .AddTile(TileID.WorkBenches)
                 .Register();
         }

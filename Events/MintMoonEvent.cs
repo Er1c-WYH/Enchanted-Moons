@@ -1,4 +1,5 @@
 ﻿using BlueMoon.Buffs;
+using BlueMoon.Items.Accessories;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria;
@@ -46,10 +47,24 @@ namespace BlueMoon.Events
             public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
             {
                 BlueMoonConfig config = ModContent.GetInstance<BlueMoonConfig>();
-                if (MintMoonEvent.mintMoon && config.DecreaseMintMoonSpawnRate)
+                if (MintMoonEvent.mintMoon && config.IncreaseMintMoonSpawnRate)
                 {
-                    spawnRate = (int)(spawnRate * 1.5f);
-                    maxSpawns = (int)(maxSpawns * 1.5f);
+                    spawnRate = (int)(spawnRate * 0.5f);
+                    maxSpawns = (int)(maxSpawns * 0.5f);
+                }
+            }
+            public override void OnKill(NPC npc)
+            {
+                if (!npc.boss && !npc.friendly && !npc.townNPC)
+                {
+                    if (HarvestMoonEvent.harvestMoon)
+                    {
+                        int dropChance = 1;
+                        if (Main.rand.Next(dropChance) == 0)
+                        {
+                            Item.NewItem(npc.GetSource_Death(), npc.position, ModContent.ItemType<EmeraldRing>());
+                        }
+                    }
                 }
             }
         }
@@ -62,13 +77,11 @@ namespace BlueMoon.Events
             Main.waterStyle = 14;
             Filters.Scene.Activate("MintMoonShader");
 
-            // Apply any buffs to the player if needed
             if (Main.LocalPlayer.whoAmI == Main.myPlayer)
             {
                 Main.LocalPlayer.AddBuff(ModContent.BuffType<MintyFreshnessBuff>(), 60 * 60 * 9);
             }
 
-            // Display a message to players
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
                 Main.NewText("The Mint Moon is rising...", 0, 255, 0);
@@ -86,7 +99,6 @@ namespace BlueMoon.Events
             Main.waterStyle = 0;
             Filters.Scene.Deactivate("MintMoonShader");
 
-            // Remove any buffs from the player if needed
             if (Main.LocalPlayer.HasBuff(ModContent.BuffType<MintyFreshnessBuff>()))
             {
                 int buffIndex = Main.LocalPlayer.FindBuffIndex(ModContent.BuffType<MintyFreshnessBuff>());
@@ -96,7 +108,6 @@ namespace BlueMoon.Events
                 }
             }
 
-            // Display a message to players
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
                 Main.NewText("The Mint Moon has set...", 0, 255, 0);

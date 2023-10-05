@@ -7,11 +7,6 @@ namespace BlueMoon.Items
 {
     public class MintRing : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-        //    DisplayName.SetDefault("Mint Ring");
-        //    Tooltip.SetDefault("Summons a refreshing Mint Moon at night");
-        }
 
         public override void SetDefaults()
         {
@@ -34,8 +29,8 @@ namespace BlueMoon.Items
         public override void AddRecipes()
         {
             CreateRecipe(1)
-                .AddIngredient(ItemID.Emerald, 1)
-                .AddRecipeGroup(RecipeGroupID.IronBar, 5)
+                .AddIngredient(ItemID.Emerald, 5)
+                .AddRecipeGroup("PlatinumBar", 10)
                 .AddTile(TileID.Anvils)
                 .Register();
         }

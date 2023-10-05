@@ -47,4 +47,9 @@ BlueMoonConfig: {
 		Label: Decrease Mint Moon Spawn Rate
 		Tooltip: ""
 	}
+
+	IncreaseMintMoonSpawnRate: {
+		Label: Increase Mint Moon Spawn Rate
+		Tooltip: ""
+	}
 }

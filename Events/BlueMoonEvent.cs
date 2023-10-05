@@ -1,17 +1,20 @@
 using BlueMoon.Buffs;
-using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Content;
+using BlueMoon.Items.Accessories;
 using Terraria;
 using Terraria.Chat;
 using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using static BlueMoon.BlueMoon;
 
 namespace BlueMoon.Events
 {
+    enum BlueMoonMessageType : byte
+    {
+        BlueMoonStatus,
+    }
     public class BlueMoonEvent : ModSystem
     {
         public static bool blueMoon;
@@ -55,12 +58,31 @@ namespace BlueMoon.Events
 
                 }
             }
+            public override void OnKill(NPC npc)
+            {
+                if (!npc.boss && !npc.friendly && !npc.townNPC)
+                {
+                    if (HarvestMoonEvent.harvestMoon)
+                    {
+                        int dropChance = 1;
+                        if (Main.rand.Next(dropChance) == 0)
+                        {
+                            Item.NewItem(npc.GetSource_Death(), npc.position, ModContent.ItemType<SapphireRing>());
+                        }
+                    }
+                }
+            }
         }
 
         public static void StartBlueMoon()
         {
             blueMoon = true;
-            Filters.Scene.Activate("BlueMoonShader");
+
+            if (Main.netMode == NetmodeID.SinglePlayer)
+            {
+                Filters.Scene.Activate("BlueMoonShader");
+            }
+
             Main.moonPhase = 0;
             Main.moonType = 4;
             Main.waterStyle = 12;
@@ -69,6 +91,8 @@ namespace BlueMoon.Events
             {
                 Main.LocalPlayer.AddBuff(ModContent.BuffType<LunarEmpowermentBuff>(), 60 * 60 * 9);
             }
+
+            BroadcastBlueMoonStatus(true);
 
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
@@ -83,11 +107,14 @@ namespace BlueMoon.Events
         public static void EndBlueMoon()
         {
             blueMoon = false;
-            Filters.Scene.Deactivate("BlueMoonShader");
+
+            if (Main.netMode == NetmodeID.SinglePlayer)
+            {
+                Filters.Scene.Deactivate("BlueMoonShader");
+            }
             Main.moonType = 0;
             Main.waterStyle = 0;
 
-            
             if (Main.LocalPlayer.HasBuff(ModContent.BuffType<LunarEmpowermentBuff>()))
             {
                 int buffIndex = Main.LocalPlayer.FindBuffIndex(ModContent.BuffType<LunarEmpowermentBuff>());
@@ -96,6 +123,8 @@ namespace BlueMoon.Events
                     Main.LocalPlayer.DelBuff(buffIndex);
                 }
             }
+
+            BroadcastBlueMoonStatus(false);
 
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
@@ -106,6 +135,18 @@ namespace BlueMoon.Events
                 ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Blue Moon has set..."), new Microsoft.Xna.Framework.Color(50, 125, 255));
             }
         }
+
+        private static void BroadcastBlueMoonStatus(bool isStarting)
+        {
+            if (Main.netMode == NetmodeID.Server)
+            {
+                ModPacket packet = BlueMoonMod.Instance.GetPacket();
+                packet.Write((byte)BlueMoonMessageType.BlueMoonStatus);
+                packet.Write(isStarting);
+                packet.Send();
+            }
+        }
+
 
         public override void SaveWorldData(TagCompound tag)
         {
@@ -129,21 +170,6 @@ namespace BlueMoon.Events
         public override void ResetEffects()
         {
             lunarEmpowerment = false;
-        }
-
-        public override void PostUpdate()
-        {
-            if (BlueMoonEvent.blueMoon)
-            {
-                if (Main.hardMode)
-                {
-                    Player.luck += 0.50f;
-                }
-                else
-                {
-                    Player.luck += 0.25f;
-                }
-            }
         }
 
         public class BlueMoonMod : ModSceneEffect
