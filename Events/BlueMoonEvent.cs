@@ -7,18 +7,19 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using static BlueMoon.BlueMoon;
+using Microsoft.Xna.Framework;
+using System;
+using BlueMoon;
 
 namespace BlueMoon.Events
 {
-    enum BlueMoonMessageType : byte
-    {
-        BlueMoonStatus,
-    }
     public class BlueMoonEvent : ModSystem
     {
         public static bool blueMoon;
         public static int prevNightCount;
+        private static float shaderOpacity = 0f;
+        private const int FadeDurationTicks = 120;
+        private static bool wasActiveLastFrame = false;
 
         public override void PostUpdateWorld()
         {
@@ -32,7 +33,14 @@ namespace BlueMoon.Events
                 {
                     prevNightCount = currNightCount;
 
-                    if (config.EnableBlueMoonSpawn && Main.rand.NextBool(9) && !blueMoon && !CherryMoonEvent.cherryMoon && !HarvestMoonEvent.harvestMoon && !MintMoonEvent.mintMoon && !Main.bloodMoon)
+                    if (config.EnableBlueMoonSpawn && 
+                        Main.rand.NextBool(3) && 
+                        Main.moonPhase == 0 && 
+                        !blueMoon && 
+                        !CherryMoonEvent.cherryMoon && 
+                        !HarvestMoonEvent.harvestMoon && 
+                        !MintMoonEvent.mintMoon && 
+                        !Main.bloodMoon)
                     {
                         StartBlueMoon();
                     }
@@ -45,7 +53,6 @@ namespace BlueMoon.Events
             }
         }
 
-
         public class BlueMoonGlobalNPC : GlobalNPC
         {
             public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
@@ -55,7 +62,6 @@ namespace BlueMoon.Events
                 {
                     spawnRate = (int)(spawnRate * 1.5f);
                     maxSpawns = (int)(maxSpawns * 1.5f);
-
                 }
             }
             public override void OnKill(NPC npc)
@@ -76,77 +82,148 @@ namespace BlueMoon.Events
 
         public static void StartBlueMoon()
         {
+            if (Main.netMode == NetmodeID.MultiplayerClient) return;
+
             blueMoon = true;
-
-            if (Main.netMode == NetmodeID.SinglePlayer)
-            {
-                Filters.Scene.Activate("BlueMoonShader");
-            }
-
-            Main.moonPhase = 0;
             Main.moonType = 4;
-            Main.waterStyle = 12;
+            Main.moonPhase = 0;
+            Main.waterStyle = 2;
 
-            if (Main.LocalPlayer.whoAmI == Main.myPlayer)
+            if (Main.netMode == NetmodeID.Server)
             {
-                Main.LocalPlayer.AddBuff(ModContent.BuffType<LunarEmpowermentBuff>(), 60 * 60 * 9);
+                NetMessage.SendData(MessageID.WorldData);
             }
 
-            BroadcastBlueMoonStatus(true);
+            MoonNetworking.SendMoonStatus(MoonID.Blue, true);
 
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
                 Main.NewText("The Blue Moon is rising...", 50, 125, 255);
+                if (Main.LocalPlayer.whoAmI == Main.myPlayer)
+                {
+                    Main.LocalPlayer.AddBuff(ModContent.BuffType<LunarEmpowermentBuff>(), 60 * 60 * 9);
+                }
             }
             else if (Main.netMode == NetmodeID.Server)
             {
-                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Blue Moon is rising..."), new Microsoft.Xna.Framework.Color(50, 125, 255));
+                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Blue Moon is rising..."), new Color(50, 125, 255));
             }
         }
 
         public static void EndBlueMoon()
         {
+            if (Main.netMode == NetmodeID.MultiplayerClient) return;
+
             blueMoon = false;
-
-            if (Main.netMode == NetmodeID.SinglePlayer)
-            {
-                Filters.Scene.Deactivate("BlueMoonShader");
-            }
             Main.moonType = 0;
-            Main.waterStyle = 0;
 
-            if (Main.LocalPlayer.HasBuff(ModContent.BuffType<LunarEmpowermentBuff>()))
+            if (Main.netMode == NetmodeID.Server)
             {
-                int buffIndex = Main.LocalPlayer.FindBuffIndex(ModContent.BuffType<LunarEmpowermentBuff>());
-                if (buffIndex != -1)
-                {
-                    Main.LocalPlayer.DelBuff(buffIndex);
-                }
+                NetMessage.SendData(MessageID.WorldData);
             }
 
-            BroadcastBlueMoonStatus(false);
+            MoonNetworking.SendMoonStatus(MoonID.Blue, false);
 
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
                 Main.NewText("The Blue Moon has set...", 50, 125, 255);
+                if (Main.LocalPlayer.HasBuff(ModContent.BuffType<LunarEmpowermentBuff>()))
+                {
+                    int buffIndex = Main.LocalPlayer.FindBuffIndex(ModContent.BuffType<LunarEmpowermentBuff>());
+                    if (buffIndex != -1) Main.LocalPlayer.DelBuff(buffIndex);
+                }
             }
             else if (Main.netMode == NetmodeID.Server)
             {
-                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Blue Moon has set..."), new Microsoft.Xna.Framework.Color(50, 125, 255));
+                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Blue Moon has set..."), new Color(50, 125, 255));
             }
         }
 
-        private static void BroadcastBlueMoonStatus(bool isStarting)
+        public static void ApplyClientEffects(bool start)
         {
-            if (Main.netMode == NetmodeID.Server)
+            if (Main.netMode == NetmodeID.Server) return;
+
+            blueMoon = start;
+
+            try
             {
-                ModPacket packet = BlueMoonMod.Instance.GetPacket();
-                packet.Write((byte)BlueMoonMessageType.BlueMoonStatus);
-                packet.Write(isStarting);
-                packet.Send();
+                if (start)
+                {
+                    if (Main.LocalPlayer.whoAmI == Main.myPlayer)
+                    {
+                        Main.LocalPlayer.AddBuff(ModContent.BuffType<LunarEmpowermentBuff>(), 60 * 60 * 9);
+                    }
+                }
+                else
+                {
+                    if (Main.LocalPlayer.HasBuff(ModContent.BuffType<LunarEmpowermentBuff>()))
+                    {
+                        int buffIndex = Main.LocalPlayer.FindBuffIndex(ModContent.BuffType<LunarEmpowermentBuff>());
+                        if (buffIndex != -1) Main.LocalPlayer.DelBuff(buffIndex);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ModContent.GetInstance<BlueMoon.BlueMoonMod>().Logger.Error("Error applying Blue Moon client effects state: " + ex);
+                Main.NewText("Error applying Blue Moon effects state: " + ex.Message, 255, 50, 50);
             }
         }
 
+        public override void PostUpdateEverything()
+        {
+            if (Main.netMode == NetmodeID.Server) return;
+
+            bool playerIsSurface = Main.LocalPlayer.position.Y / 16f < Main.worldSurface;
+
+            bool shouldBeActive = blueMoon && playerIsSurface;
+            float targetOpacity = shouldBeActive ? 1f : 0f;
+            float fadeStep = 1f / FadeDurationTicks;
+
+            if (shaderOpacity < targetOpacity)
+            {
+                shaderOpacity = Math.Min(targetOpacity, shaderOpacity + fadeStep);
+            }
+            else if (shaderOpacity > targetOpacity)
+            {
+                shaderOpacity = Math.Max(targetOpacity, shaderOpacity - fadeStep);
+            }
+
+            bool isActiveNow = shaderOpacity > 0f;
+            if (isActiveNow != wasActiveLastFrame)
+            {
+                try {
+                    if (isActiveNow)
+                    {
+                        if (!Filters.Scene["BlueMoonShader"].IsActive())
+                            Filters.Scene.Activate("BlueMoonShader");
+                    }
+                    else
+                    {
+                        if (Filters.Scene["BlueMoonShader"].IsActive())
+                            Filters.Scene.Deactivate("BlueMoonShader");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ModContent.GetInstance<BlueMoon.BlueMoonMod>().Logger.Error("Error toggling Blue Moon shader: " + ex);
+                }
+                wasActiveLastFrame = isActiveNow;
+            }
+
+            if (isActiveNow || shaderOpacity > 0)
+            {
+                try
+                {
+                    Filters.Scene["BlueMoonShader"].GetShader().UseOpacity(shaderOpacity);
+                }
+                catch (Exception ex)
+                {
+                    if(isActiveNow)
+                        ModContent.GetInstance<BlueMoon.BlueMoonMod>().Logger.Warn("Could not apply opacity to Blue Moon shader: " + ex);
+                }
+            }
+        }
 
         public override void SaveWorldData(TagCompound tag)
         {
@@ -156,9 +233,25 @@ namespace BlueMoon.Events
         public override void LoadWorldData(TagCompound tag)
         {
             blueMoon = tag.GetBool("blueMoon");
-            if (blueMoon)
+            if (Main.netMode != NetmodeID.Server)
             {
-                Filters.Scene.Activate("BlueMoonShader");
+                if (blueMoon) {
+                    shaderOpacity = 1f;
+                    wasActiveLastFrame = true;
+                    try {
+                        Filters.Scene.Activate("BlueMoonShader");
+                        Filters.Scene["BlueMoonShader"].GetShader().UseOpacity(shaderOpacity);
+                        if (Main.LocalPlayer.whoAmI == Main.myPlayer)
+                        {
+                            Main.LocalPlayer.AddBuff(ModContent.BuffType<LunarEmpowermentBuff>(), 60 * 60 * 9);
+                        }
+                    } catch (Exception ex) {
+                        ModContent.GetInstance<BlueMoon.BlueMoonMod>().Logger.Error("Error applying Blue Moon effects on load: " + ex);
+                    }
+                } else {
+                    shaderOpacity = 0f;
+                    wasActiveLastFrame = false;
+                }
             }
         }
     }

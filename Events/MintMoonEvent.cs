@@ -10,6 +10,9 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using Microsoft.Xna.Framework;
+using System;
+using BlueMoon;
 
 namespace BlueMoon.Events
 {
@@ -17,6 +20,9 @@ namespace BlueMoon.Events
     {
         public static bool mintMoon;
         public static int prevNightCount;
+        private static float shaderOpacity = 0f;
+        private const int FadeDurationTicks = 120;
+        private static bool wasActiveLastFrame = false;
 
         public override void PostUpdateWorld()
         {
@@ -29,7 +35,14 @@ namespace BlueMoon.Events
                 {
                     prevNightCount = currNightCount;
 
-                    if (config.EnableMintMoonSpawn && Main.rand.NextBool(9) && !mintMoon && !BlueMoonEvent.blueMoon && !CherryMoonEvent.cherryMoon && !HarvestMoonEvent.harvestMoon && !Main.bloodMoon)
+                    if (config.EnableMintMoonSpawn && 
+                        Main.rand.NextBool(3) &&
+                        Main.moonPhase == 2 &&
+                        !mintMoon && 
+                        !BlueMoonEvent.blueMoon && 
+                        !CherryMoonEvent.cherryMoon && 
+                        !HarvestMoonEvent.harvestMoon && 
+                        !Main.bloodMoon)
                     {
                         StartMintMoon();
                     }
@@ -71,50 +84,146 @@ namespace BlueMoon.Events
 
         public static void StartMintMoon()
         {
-            mintMoon = true;
-            Main.moonPhase = 0;
-            Main.moonType = 5;
-            Main.waterStyle = 14;
-            Filters.Scene.Activate("MintMoonShader");
+            if (Main.netMode == NetmodeID.MultiplayerClient) return;
 
-            if (Main.LocalPlayer.whoAmI == Main.myPlayer)
+            mintMoon = true;
+            Main.moonType = 5;
+            Main.moonPhase = 2;
+            Main.waterStyle = 4;
+
+            if (Main.netMode == NetmodeID.Server)
             {
-                Main.LocalPlayer.AddBuff(ModContent.BuffType<MintyFreshnessBuff>(), 60 * 60 * 9);
+                NetMessage.SendData(MessageID.WorldData);
             }
+
+            MoonNetworking.SendMoonStatus(MoonID.Mint, true);
 
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
-                Main.NewText("The Mint Moon is rising...", 0, 255, 0);
+                Main.NewText("The Mint Moon is rising...", 152, 251, 152);
+                if (Main.LocalPlayer.whoAmI == Main.myPlayer)
+                {
+                    Main.LocalPlayer.AddBuff(ModContent.BuffType<MintyFreshnessBuff>(), 60 * 60 * 9);
+                }
             }
             else if (Main.netMode == NetmodeID.Server)
             {
-                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Mint Moon is rising..."), new Microsoft.Xna.Framework.Color(0, 255, 0));
+                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Mint Moon is rising..."), new Color(152, 251, 152));
             }
         }
 
         public static void EndMintMoon()
         {
+            if (Main.netMode == NetmodeID.MultiplayerClient) return;
+
             mintMoon = false;
             Main.moonType = 0;
-            Main.waterStyle = 0;
-            Filters.Scene.Deactivate("MintMoonShader");
 
-            if (Main.LocalPlayer.HasBuff(ModContent.BuffType<MintyFreshnessBuff>()))
+            if (Main.netMode == NetmodeID.Server)
             {
-                int buffIndex = Main.LocalPlayer.FindBuffIndex(ModContent.BuffType<MintyFreshnessBuff>());
-                if (buffIndex != -1)
-                {
-                    Main.LocalPlayer.DelBuff(buffIndex);
-                }
+                NetMessage.SendData(MessageID.WorldData);
             }
+
+            MoonNetworking.SendMoonStatus(MoonID.Mint, false);
 
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
-                Main.NewText("The Mint Moon has set...", 0, 255, 0);
+                Main.NewText("The Mint Moon has set...", 152, 251, 152);
+                if (Main.LocalPlayer.HasBuff(ModContent.BuffType<MintyFreshnessBuff>()))
+                {
+                    int buffIndex = Main.LocalPlayer.FindBuffIndex(ModContent.BuffType<MintyFreshnessBuff>());
+                    if (buffIndex != -1) Main.LocalPlayer.DelBuff(buffIndex);
+                }
             }
             else if (Main.netMode == NetmodeID.Server)
             {
-                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Mint Moon has set..."), new Microsoft.Xna.Framework.Color(0, 255, 0));
+                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Mint Moon has set..."), new Color(152, 251, 152));
+            }
+        }
+
+        public static void ApplyClientEffects(bool start)
+        {
+            if (Main.netMode == NetmodeID.Server) return;
+
+            mintMoon = start;
+
+            try
+            {
+                if (start)
+                {
+                    if (Main.LocalPlayer.whoAmI == Main.myPlayer)
+                    {
+                        Main.LocalPlayer.AddBuff(ModContent.BuffType<MintyFreshnessBuff>(), 60 * 60 * 9);
+                    }
+                }
+                else
+                {
+                    if (Main.LocalPlayer.HasBuff(ModContent.BuffType<MintyFreshnessBuff>()))
+                    {
+                        int buffIndex = Main.LocalPlayer.FindBuffIndex(ModContent.BuffType<MintyFreshnessBuff>());
+                        if (buffIndex != -1) Main.LocalPlayer.DelBuff(buffIndex);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ModContent.GetInstance<BlueMoon.BlueMoonMod>().Logger.Error("Error applying Mint Moon client effects state: " + ex);
+                Main.NewText("Error applying Mint Moon effects state: " + ex.Message, 255, 50, 50);
+            }
+        }
+
+        public override void PostUpdateEverything()
+        {
+            if (Main.netMode == NetmodeID.Server) return;
+
+            bool playerIsSurface = Main.LocalPlayer.position.Y / 16f < Main.worldSurface;
+
+            bool shouldBeActive = mintMoon && playerIsSurface;
+            float targetOpacity = shouldBeActive ? 1f : 0f;
+            float fadeStep = 1f / FadeDurationTicks;
+
+            if (shaderOpacity < targetOpacity)
+            {
+                shaderOpacity = Math.Min(targetOpacity, shaderOpacity + fadeStep);
+            }
+            else if (shaderOpacity > targetOpacity)
+            {
+                shaderOpacity = Math.Max(targetOpacity, shaderOpacity - fadeStep);
+            }
+
+            bool isActiveNow = shaderOpacity > 0f;
+            if (isActiveNow != wasActiveLastFrame)
+            {
+                try {
+                    if (isActiveNow)
+                    {
+                        if (!Filters.Scene["MintMoonShader"].IsActive())
+                            Filters.Scene.Activate("MintMoonShader");
+                    }
+                    else
+                    {
+                        if (Filters.Scene["MintMoonShader"].IsActive())
+                            Filters.Scene.Deactivate("MintMoonShader");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ModContent.GetInstance<BlueMoon.BlueMoonMod>().Logger.Error("Error toggling Mint Moon shader: " + ex);
+                }
+                wasActiveLastFrame = isActiveNow;
+            }
+
+            if (isActiveNow || shaderOpacity > 0)
+            {
+                try
+                {
+                    Filters.Scene["MintMoonShader"].GetShader().UseOpacity(shaderOpacity);
+                }
+                catch (Exception ex)
+                {
+                    if(isActiveNow)
+                        ModContent.GetInstance<BlueMoon.BlueMoonMod>().Logger.Warn("Could not apply opacity to Mint Moon shader: " + ex);
+                }
             }
         }
 
@@ -126,9 +235,25 @@ namespace BlueMoon.Events
         public override void LoadWorldData(TagCompound tag)
         {
             mintMoon = tag.GetBool("mintMoon");
-            if (mintMoon)
+            if (Main.netMode != NetmodeID.Server)
             {
-                Filters.Scene.Activate("MintMoonShader");
+                if (mintMoon) {
+                    shaderOpacity = 1f;
+                    wasActiveLastFrame = true;
+                    try {
+                        Filters.Scene.Activate("MintMoonShader");
+                        Filters.Scene["MintMoonShader"].GetShader().UseOpacity(shaderOpacity);
+                        if (Main.LocalPlayer.whoAmI == Main.myPlayer)
+                        {
+                            Main.LocalPlayer.AddBuff(ModContent.BuffType<MintyFreshnessBuff>(), 60 * 60 * 9);
+                        }
+                    } catch (Exception ex) {
+                        ModContent.GetInstance<BlueMoon.BlueMoonMod>().Logger.Error("Error applying Mint Moon effects on load: " + ex);
+                    }
+                } else {
+                    shaderOpacity = 0f;
+                    wasActiveLastFrame = false;
+                }
             }
         }
 

@@ -7,7 +7,6 @@ using Terraria.ObjectData;
 
 namespace BlueMoon.Items.MusicBoxes
 {
-    // See ExampleMod/Common/Systems/MusicLoadingSystem for an explanation on music.
     public class HarvestMoonMusicBoxTile : ModTile
     {
         public override void SetStaticDefaults()

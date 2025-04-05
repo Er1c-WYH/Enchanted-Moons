@@ -18,7 +18,6 @@ namespace BlueMoon.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            // Apply the custom MoonRing buff
             player.AddBuff(ModContent.BuffType<Buffs.MoonsRingBuff>(), 2);
         }
         public override void AddRecipes()

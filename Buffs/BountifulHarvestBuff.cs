@@ -27,7 +27,6 @@ public class HarvestMoonGlobalNPCBuff : GlobalNPC
         Player player = Main.player[npc.lastInteraction];
         if (player.HasBuff(ModContent.BuffType<BountifulHarvestBuff>()))
         {
-            // increase the coin value of the NPC
             if (Main.hardMode)
             {
                 npc.value *= 2f;
