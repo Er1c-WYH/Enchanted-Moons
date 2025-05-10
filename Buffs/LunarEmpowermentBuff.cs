@@ -11,9 +11,24 @@ namespace BlueMoon.Buffs
             Main.buffNoTimeDisplay[Type] = true;
         }
 
-        public class LunarEmpowerment : ModPlayer
+        public override void Update(Player player, ref int buffIndex)
         {
-            public override void ModifyLuck(ref float luck)
+            player.GetModPlayer<LunarEmpowermentPlayer>().lunarEmpowerment = true;
+        }
+    }
+
+    public class LunarEmpowermentPlayer : ModPlayer
+    {
+        public bool lunarEmpowerment;
+
+        public override void ResetEffects()
+        {
+            lunarEmpowerment = false;
+        }
+
+        public override void ModifyLuck(ref float luck)
+        {
+            if (lunarEmpowerment)
             {
                 if (Main.hardMode)
                 {
