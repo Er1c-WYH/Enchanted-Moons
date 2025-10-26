@@ -2,13 +2,13 @@ Mods: {
 	BlueMoon: {
 		Items: {
 			BlueMedallion: {
-				Tooltip: 夜晚召唤稀有的蓝月亮
-				DisplayName: 蓝色勋章
+				Tooltip: 夜晚召唤稀有的蔚蓝月亮
+				DisplayName: 蔚蓝勋章
 			}
 
 			CherryAmulet: {
 				Tooltip: 夜晚召唤可爱的樱花月亮
-				DisplayName: 樱花护身符
+				DisplayName: 樱花护符
 			}
 
 			HarvestLantern: {
@@ -17,65 +17,65 @@ Mods: {
 			}
 
 			HarvestMoonMusicBox: {
-				// Tooltip: ""
-				// DisplayName: Harvest Moon Music Box
+				Tooltip: ""
+				DisplayName: 丰收月亮音乐盒
 			}
 
 			CherryMoonMusicBox: {
-				// Tooltip: ""
-				// DisplayName: Cherry Moon Music Box
+				Tooltip: ""
+				DisplayName: 樱花月亮音乐盒
 			}
 
 			BlueMoonMusicBox: {
-				// Tooltip: ""
-				// DisplayName: Blue Moon Music Box
+				Tooltip: ""
+				DisplayName: 蔚蓝月亮音乐盒
 			}
 
 			MintRing: {
-				// Tooltip: Summons a refreshing Mint Moon at night
-				// DisplayName: Mint Ring
+				Tooltip: 夜晚召唤清新的薄荷月亮
+				DisplayName: 薄荷戒指
 			}
 
 			MintMoonMusicBox: {
-				// Tooltip: ""
-				// DisplayName: Mint Moon Music Box
+				Tooltip: ""
+				DisplayName: 薄荷月亮音乐盒
 			}
 
 			SapphireRing: {
-				// DisplayName: Sapphire Ring
-				// Tooltip: Gives the Lunar Empowerment Buff
+				DisplayName: 蓝玉之戒
+				Tooltip: 赋予「月亮赋能」增益
 			}
 
 			TopazRing: {
-				// DisplayName: Topaz Ring
-				// Tooltip: Gives the Bountiful Harvest Buff
+				DisplayName: 黄玉之戒
+				Tooltip: 赋予「丰收之祝」增益
 			}
 
 			AmethystRing: {
-				// DisplayName: Amethyst Ring
-				// Tooltip: Gives the Floral Blessing Buff
+				DisplayName: 紫晶之戒
+				Tooltip: 赋予「花之祝福」增益
 			}
 
 			EmeraldRing: {
-				// DisplayName: Emerald Ring
-				// Tooltip: Gives the Minty Freshness BUFF
+				DisplayName: 翡翠之戒
+				Tooltip: 赋予「薄荷清香」增益
 			}
 
 			MoonsRing: {
-				// DisplayName: Moons Ring
-				// Tooltip: Increases coin drops, health regeneration, critical chance, and magic damage.
+				DisplayName: 月之戒
+				Tooltip: 提升金币掉落量、生命恢复、暴击率与魔法伤害
 			}
 		}
 
 		Buffs: {
 			BountifulHarvestBuff: {
 				DisplayName: 丰收之祝
-				Description: 丰收月亮的祝福充实了你的口袋。敌人为你掉落更多的硬币。
+				Description: 丰收月亮的祝福充实了你的口袋，敌人为你掉落更多的硬币。
 			}
 
 			FloralBlessingBuff: {
 				DisplayName: 花之祝福
-				Description: 拥抱樱花月亮的治愈光环。你的伤口迅速愈合。
+				Description: 拥抱樱花月亮的治愈光环，你的伤口迅速愈合。
 			}
 
 			LunarEmpowermentBuff: {
@@ -84,21 +84,21 @@ Mods: {
 			}
 
 			MintyFreshnessBuff: {
-				// DisplayName: Minty Freshness
-				// Description: The Mint Moon's sparkling light enhances your magical abilities. You deal more damage and have lower cooldowns.
+				DisplayName: 薄荷清香
+				Description: 薄荷月亮闪耀的光芒增强了你的魔力。你造成更多伤害且冷却时间缩短。
 			}
 
 			MoonsRingBuff: {
-				// DisplayName: Moonlight Harmony
-				// Description: You are blessed by the power of the four celestial moons.
+				DisplayName: 月光和鸣
+				Description: 你受到了四种天体之月的祝福。
 			}
 		}
 
 		Tiles: {
-			// HarvestMoonMusicBoxTile.MapEntry: Harvest Moon Music Box
-			// CherryMoonMusicBoxTile.MapEntry: Cherry Moon Music Box
-			// BlueMoonMusicBoxTile.MapEntry: Blue Moon Music Box
-			// MintMoonMusicBoxTile.MapEntry: Mint Moon Music Box
+			HarvestMoonMusicBoxTile.MapEntry: 丰收月亮音乐盒
+			CherryMoonMusicBoxTile.MapEntry: 樱花月亮音乐盒
+			BlueMoonMusicBoxTile.MapEntry: 蓝月亮音乐盒
+			MintMoonMusicBoxTile.MapEntry: 薄荷月亮音乐盒
 		}
 	}
 }
