@@ -97,7 +97,7 @@ Mods: {
 		Tiles: {
 			HarvestMoonMusicBoxTile.MapEntry: 丰收月亮音乐盒
 			CherryMoonMusicBoxTile.MapEntry: 樱花月亮音乐盒
-			BlueMoonMusicBoxTile.MapEntry: 蓝月亮音乐盒
+			BlueMoonMusicBoxTile.MapEntry: 蔚蓝月亮音乐盒
 			MintMoonMusicBoxTile.MapEntry: 薄荷月亮音乐盒
 		}
 
