@@ -100,5 +100,27 @@ Mods: {
 			BlueMoonMusicBoxTile.MapEntry: 蓝月亮音乐盒
 			MintMoonMusicBoxTile.MapEntry: 薄荷月亮音乐盒
 		}
+
+		Events: {
+			BlueMoonEvent: {
+				Rising: 蔚蓝月亮正在升起……
+				Set: 蔚蓝月亮已经落下……
+			}
+
+			CherryMoonEvent: {
+				Rising: 樱花月亮正在升起……
+				Set: 樱花月亮已经落下……
+			}
+
+			HarvestMoonEvent: {
+				Rising: 丰收月亮正在升起……
+				Set: 丰收月亮已经落下……
+			}
+
+			MintMoonEvent: {
+				Rising: 薄荷月亮正在升起……
+				Set: 薄荷月亮已经落下……
+			}
+		}
 	}
 }

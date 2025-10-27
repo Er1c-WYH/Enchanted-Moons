@@ -98,17 +98,20 @@ namespace BlueMoon.Events
 
             MoonNetworking.SendMoonStatus(MoonID.Cherry, true);
 
+            // StartCherryMoon()
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
-                Main.NewText("The Cherry Moon is rising...", 255, 20, 147);
+                var msg = Language.GetTextValue("Mods.BlueMoon.Events.CherryMoonEvent.Rising");
+                Main.NewText(msg, 255, 20, 147);
                 if (Main.LocalPlayer.whoAmI == Main.myPlayer)
-                {
                     Main.LocalPlayer.AddBuff(ModContent.BuffType<FloralBlessingBuff>(), 60 * 60 * 9);
-                }
             }
             else if (Main.netMode == NetmodeID.Server)
             {
-                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Cherry Moon is rising..."), new Color(255, 20, 147));
+                ChatHelper.BroadcastChatMessage(
+                    NetworkText.FromKey("Mods.BlueMoon.Events.CherryMoonEvent.Rising"),
+                    new Color(255, 20, 147)
+                );
             }
         }
 
@@ -126,9 +129,11 @@ namespace BlueMoon.Events
 
             MoonNetworking.SendMoonStatus(MoonID.Cherry, false);
 
+            // EndCherryMoon()
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
-                Main.NewText("The Cherry Moon has set...", 255, 20, 147);
+                var msg = Language.GetTextValue("Mods.BlueMoon.Events.CherryMoonEvent.Set");
+                Main.NewText(msg, 255, 20, 147);
                 if (Main.LocalPlayer.HasBuff(ModContent.BuffType<FloralBlessingBuff>()))
                 {
                     int buffIndex = Main.LocalPlayer.FindBuffIndex(ModContent.BuffType<FloralBlessingBuff>());
@@ -137,7 +142,10 @@ namespace BlueMoon.Events
             }
             else if (Main.netMode == NetmodeID.Server)
             {
-                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Cherry Moon has set..."), new Color(255, 20, 147));
+                ChatHelper.BroadcastChatMessage(
+                    NetworkText.FromKey("Mods.BlueMoon.Events.CherryMoonEvent.Set"),
+                    new Color(255, 20, 147)
+                );
             }
         }
 

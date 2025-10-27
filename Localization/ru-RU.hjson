@@ -100,5 +100,27 @@ Mods: {
 			// BlueMoonMusicBoxTile.MapEntry: Blue Moon Music Box
 			// MintMoonMusicBoxTile.MapEntry: Mint Moon Music Box
 		}
+
+		Events: {
+			BlueMoonEvent: {
+				// Rising: The Blue Moon is rising...
+				// Set: The Blue Moon has set...
+			}
+
+			CherryMoonEvent: {
+				// Rising: The Cherry Moon is rising...
+				// Set: The Cherry Moon has set...
+			}
+
+			HarvestMoonEvent: {
+				// Rising: The Harvest Moon is rising...
+				// Set: The Harvest Moon has set...
+			}
+
+			MintMoonEvent: {
+				// Rising: The Mint Moon is rising...
+				// Set: The Mint Moon has set...
+			}
+		}
 	}
 }

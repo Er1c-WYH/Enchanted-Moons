@@ -99,15 +99,17 @@ namespace BlueMoon.Events
 
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
-                Main.NewText("The Harvest Moon is rising...", 255, 165, 0);
+                var msg = Language.GetTextValue("Mods.BlueMoon.Events.HarvestMoonEvent.Rising");
+                Main.NewText(msg, 255, 165, 0);
                 if (Main.LocalPlayer.whoAmI == Main.myPlayer)
-                {
                     Main.LocalPlayer.AddBuff(ModContent.BuffType<BountifulHarvestBuff>(), 60 * 60 * 9);
-                }
             }
             else if (Main.netMode == NetmodeID.Server)
             {
-                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Harvest Moon is rising..."), new Color(255, 165, 0));
+                ChatHelper.BroadcastChatMessage(
+                    NetworkText.FromKey("Mods.BlueMoon.Events.HarvestMoonEvent.Rising"),
+                    new Color(255, 165, 0)
+                );
             }
         }
 
@@ -127,7 +129,8 @@ namespace BlueMoon.Events
 
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
-                Main.NewText("The Harvest Moon has set...", 255, 165, 0);
+                var msg = Language.GetTextValue("Mods.BlueMoon.Events.HarvestMoonEvent.Set");
+                Main.NewText(msg, 255, 165, 0);
                 if (Main.LocalPlayer.HasBuff(ModContent.BuffType<BountifulHarvestBuff>()))
                 {
                     int buffIndex = Main.LocalPlayer.FindBuffIndex(ModContent.BuffType<BountifulHarvestBuff>());
@@ -136,7 +139,10 @@ namespace BlueMoon.Events
             }
             else if (Main.netMode == NetmodeID.Server)
             {
-                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Harvest Moon has set..."), new Color(255, 165, 0));
+                ChatHelper.BroadcastChatMessage(
+                    NetworkText.FromKey("Mods.BlueMoon.Events.HarvestMoonEvent.Set"),
+                    new Color(255, 165, 0)
+                );
             }
         }
 

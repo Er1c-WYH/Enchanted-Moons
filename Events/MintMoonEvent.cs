@@ -100,15 +100,17 @@ namespace BlueMoon.Events
 
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
-                Main.NewText("The Mint Moon is rising...", 152, 251, 152);
+                var msg = Language.GetTextValue("Mods.BlueMoon.Events.MintMoonEvent.Rising");
+                Main.NewText(msg, 152, 251, 152);
                 if (Main.LocalPlayer.whoAmI == Main.myPlayer)
-                {
                     Main.LocalPlayer.AddBuff(ModContent.BuffType<MintyFreshnessBuff>(), 60 * 60 * 9);
-                }
             }
             else if (Main.netMode == NetmodeID.Server)
             {
-                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Mint Moon is rising..."), new Color(152, 251, 152));
+                ChatHelper.BroadcastChatMessage(
+                    NetworkText.FromKey("Mods.BlueMoon.Events.MintMoonEvent.Rising"),
+                    new Color(152, 251, 152)
+                );
             }
         }
 
@@ -128,7 +130,8 @@ namespace BlueMoon.Events
 
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
-                Main.NewText("The Mint Moon has set...", 152, 251, 152);
+                var msg = Language.GetTextValue("Mods.BlueMoon.Events.MintMoonEvent.Set");
+                Main.NewText(msg, 152, 251, 152);
                 if (Main.LocalPlayer.HasBuff(ModContent.BuffType<MintyFreshnessBuff>()))
                 {
                     int buffIndex = Main.LocalPlayer.FindBuffIndex(ModContent.BuffType<MintyFreshnessBuff>());
@@ -137,7 +140,10 @@ namespace BlueMoon.Events
             }
             else if (Main.netMode == NetmodeID.Server)
             {
-                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Mint Moon has set..."), new Color(152, 251, 152));
+                ChatHelper.BroadcastChatMessage(
+                    NetworkText.FromKey("Mods.BlueMoon.Events.MintMoonEvent.Set"),
+                    new Color(152, 251, 152)
+                );
             }
         }
 
